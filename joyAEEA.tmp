@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://baqrukpkt3n7l"]
+
+[ext_resource type="Script" path="res://joystick.gd" id="1_trpl6"]
+[ext_resource type="Texture2D" uid="uid://d1yuk47jkrljx" path="res://assets/VirtualJoystickPack/Joystick.png" id="1_y274p"]
+[ext_resource type="Texture2D" uid="uid://b2svnbfm0o4x2" path="res://assets/VirtualJoystickPack/SmallHandleFilled.png" id="2_0lpwq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gw88x"]
+radius = 136.092
+
+[node name="Joystick" type="Node2D"]
+position = Vector2(544, 1720)
+script = ExtResource("1_trpl6")
+metadata/_edit_group_ = true
+
+[node name="OuterCircle" type="Sprite2D" parent="."]
+texture = ExtResource("1_y274p")
+
+[node name="InnerCircle" type="Sprite2D" parent="."]
+texture = ExtResource("2_0lpwq")
+
+[node name="TouchArea" type="Area2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TouchArea"]
+shape = SubResource("CircleShape2D_gw88x")

@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://brimjg1m4o114"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_83to2"]
+[ext_resource type="Texture2D" uid="uid://bhbfmrgg2rvk6" path="res://assets/Tiny RPG Character Asset Pack v1.03 -Free Soldier&Orc/Characters(100x100)/Soldier/Soldier/soldardin.png" id="1_r1ewb"]
+[ext_resource type="PackedScene" uid="uid://baqrukpkt3n7l" path="res://joystick.tscn" id="3_ab2fy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjxsk"]
+atlas = ExtResource("1_r1ewb")
+region = Rect2(0, 0, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyfdg"]
+atlas = ExtResource("1_r1ewb")
+region = Rect2(15, 0, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_817jy"]
+atlas = ExtResource("1_r1ewb")
+region = Rect2(30, 0, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x826"]
+atlas = ExtResource("1_r1ewb")
+region = Rect2(45, 0, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmf6v"]
+atlas = ExtResource("1_r1ewb")
+region = Rect2(60, 0, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrw8y"]
+atlas = ExtResource("1_r1ewb")
+region = Rect2(75, 0, 15, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1d5vd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjxsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyfdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_817jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x826")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmf6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrw8y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hq8dt"]
+radius = 17.0
+height = 58.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(503, 1175)
+scale = Vector2(3, 3)
+script = ExtResource("1_83to2")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1d5vd")
+animation = &"idle"
+frame_progress = 0.993493
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, 2)
+shape = SubResource("CapsuleShape2D_hq8dt")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Joystick" parent="UI" instance=ExtResource("3_ab2fy")]
